@@ -1,5 +1,10 @@
-%h1 Moments
-= link_to "New Moment", new_moment_path
-- @moments.each do |moment|
-  = image_tag moment.image.url(:medium)
-  = moment.caption
+.posts-wrapper.row
+  - @moments.each do |moment|
+    .post
+      .post-head
+        .name
+          Krister
+      .image.center-block
+        =link_to (image_tag moment.image.url(:medium), class:'img-responsive'), moment_path(moment)
+      %p.caption
+        =moment.caption
