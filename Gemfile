@@ -14,6 +14,8 @@ gem 'haml'
 gem "paperclip"
 gem 'fabrication'
 gem 'faker'
+gem 'bootstrap-sass'
+gem 'bootstrap_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
