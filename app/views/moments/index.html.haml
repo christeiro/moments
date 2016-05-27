@@ -1,2 +1,5 @@
 %h1 Moments
 = link_to "New Moment", new_moment_path
+- @moments.each do |moment|
+  = image_tag moment.image.url(:medium)
+  = moment.caption

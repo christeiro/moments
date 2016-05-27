@@ -1,6 +1,8 @@
 class MomentsController < ApplicationController
   before_action :set_params, only: [:create]
+
   def index
+    @moments = Moment.all
   end
 
   def new
