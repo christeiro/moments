@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526152021) do
+ActiveRecord::Schema.define(version: 20160527122954) do
 
-  create_table "memories", force: :cascade do |t|
+  create_table "moments", force: :cascade do |t|
     t.string   "caption"
     t.string   "image_file_name"
     t.string   "image_content_type"
