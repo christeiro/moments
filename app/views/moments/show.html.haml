@@ -1,2 +1,13 @@
-= image_tag @moment.image.url(:medium)
-= @moment.caption
+.posts-wrapper.row
+  .post
+    .post-head
+      .name
+        Krister
+    .image.center-block
+      =image_tag @moment.image.url(:medium), class:'img-responsive'
+    %p.caption
+      =@moment.caption
+    .text-center.edit-links
+      =link_to "Cancel", moments_path
+      |
+      =link_to "Edit Moment", edit_moment_path(@moment)

@@ -16,6 +16,7 @@ gem 'fabrication'
 gem 'faker'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem 'simple_form'
 gem 'sprockets-rails'
 
 # Use ActiveModel has_secure_password
