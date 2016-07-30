@@ -17,7 +17,7 @@ class MomentsController < ApplicationController
       redirect_to @moment
     else
       flash[:error] = "Error! You need an image for creating a moment"
-      render 'new'
+      render :new
     end
   end
 
@@ -29,12 +29,18 @@ class MomentsController < ApplicationController
   end
 
   def update
-    @moment.update(set_params)
-    redirect_to moment_path(@moment)
+    if @moment.update(set_params)
+      flash[:success] = "Moment updated!"
+      redirect_to moment_path(@moment)
+    else
+      flash[:alert] = "Update failed. Please check the form!"
+      render :edit
+    end
   end
 
   def destroy
     @moment.destroy
+    flash[:success] = "Moment successfully deleted!"
     redirect_to moments_path
   end
 
