@@ -5,5 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-first_moment = Fabricate(:moment, caption: "Best coffee ever")
-second_moment = Fabricate(:moment, caption: "Love the coffee")
+user = Fabricate(:user)
+first_moment = Fabricate(:moment, caption: "Best coffee ever", user: user)
+second_moment = Fabricate(:moment, caption: "Love the coffee", user: user)
