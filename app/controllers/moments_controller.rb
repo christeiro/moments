@@ -1,18 +1,18 @@
 class MomentsController < ApplicationController
   before_action :set_params, only: [ :create ]
   before_action :set_moment, only: [ :edit, :show, :update, :destroy ]
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :show ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
 
   def index
     @moments = Moment.all
   end
 
   def new
-    @moment = Moment.new
+    @moment = current_user.moments.build
   end
 
   def create
-    @moment = Moment.new(set_params)
+    @moment = current_user.moments.build(set_params)
     if @moment.save
       flash[:success] = "Your moment was created!"
       redirect_to @moment
