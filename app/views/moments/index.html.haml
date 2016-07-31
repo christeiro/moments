@@ -1,10 +1,3 @@
 .posts-wrapper.row
   - @moments.each do |moment|
-    .post
-      .post-head
-        .name
-          = moment.user.user_name
-      .image.center-block
-        =link_to (image_tag moment.image.url(:medium), class:'img-responsive'), moment_path(moment)
-      %p.caption
-        =moment.caption
+    = render 'moment', moment: moment
