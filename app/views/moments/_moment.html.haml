@@ -8,22 +8,16 @@
       = link_to (image_tag moment.image.url(:medium), class:'img-responsive'), moment_path(moment)
   .post-bottom
     .caption
-      .user-name
-        = moment.user.user_name
-      = moment.caption
-    - if moment.comments
-      - moment.comments.each do |comment|
-        .comment
-          .user-name
-            = comment.user.user_name
-          .comment-content
-            = comment.content
-          - if comment.user == current_user
-            = link_to moment_comment_path(moment, comment), method: :delete, data: { confirm: "Are you sure?" } do
-              %span(class="glyphicon glyphicon-remove delete-comment")
+      .caption-content
+        .user-name
+          = moment.user.user_name
+        = moment.caption
+      .comments{id: "comments_#{moment.id}"}
+        - if moment.comments
+          = render moment.comments, moment: moment
   .comment-like-form.row
     .like-button.col-sm-1
       %span(class="glyphicon glyphicon-heart-empty")
     .comment-form.col-sm-11
-      = form_for [moment, moment.comments.new] do |f|
-        = f.text_field :content, placeholder: 'Add a comment...'
+      = form_for([moment, moment.comments.build], remote: true) do |f|
+        = f.text_field :content, placeholder: 'Add acomment...', class: "comment_content", id: "comment_content_#{moment.id}"
