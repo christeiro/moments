@@ -2,6 +2,7 @@ class MomentsController < ApplicationController
   before_action :set_params, only: [ :create ]
   before_action :set_moment, only: [ :edit, :show, :update, :destroy ]
   before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
+  before_action :owned_moment, only: [ :edit, :update, :destroy]
 
   def index
     @moments = Moment.all
@@ -52,5 +53,12 @@ class MomentsController < ApplicationController
 
   def set_moment
     @moment = Moment.find(params[:id])
+  end
+
+  def owned_moment
+    unless current_user == @moment.user
+      flash[:alert] = "That post doesn't belong to you!"
+      redirect_to root_path
+    end
   end
 end
