@@ -6,4 +6,5 @@ class Moment < ActiveRecord::Base
   belongs_to :user
   validates :user_id, presence: true
   has_many :comments, dependent: :destroy
+  validates :caption, length: { minimum: 3, maximum: 300 }
 end
