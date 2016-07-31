@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'moments#index'
-  resources :moments
+  resources :moments do
+    resources :comments
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
