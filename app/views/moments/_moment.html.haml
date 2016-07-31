@@ -4,6 +4,8 @@
       .thumb-img
       .user-name
         = moment.user.user_name
+      .time-ago
+        = time_ago_in_words moment.created_at
     .image.center-block
       = link_to (image_tag moment.image.url(:medium), class:'img-responsive'), moment_path(moment)
   .post-bottom
@@ -13,8 +15,11 @@
           = moment.user.user_name
         = moment.caption
       .comments{id: "comments_#{moment.id}"}
-        - if moment.comments
-          = render moment.comments, moment: moment
+        - if moment.comments.any?
+          .paginator{id: "#comments-paginator-#{moment.id}"}
+            - unless moment.comments.count <= 4
+              = link_to "view all #{moment.comments.count} comments", moment_comments_path(moment), remote: true, class: 'more-comments', data: {moment_id: "#{moment.id}", type: "html"}
+          = render moment.comments.last(4), moment: moment
   .comment-like-form.row
     .like-button.col-sm-1
       %span(class="glyphicon glyphicon-heart-empty")

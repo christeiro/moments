@@ -1,3 +1,10 @@
-.posts-wrapper.row
-  - @moments.each do |moment|
-    = render 'moment', moment: moment
+-#.posts-wrapper.row
+-#  - @moments.each do |moment|
+-#    #posts
+-#      = render 'moment', moment: moment
+-#  #paginator.text-center
+-#    = link_to_next_page @moments, 'LOAD MORE', remote: true, id: 'load_more'
+#posts
+  = render 'moments'
+#paginator.text-center
+  = link_to_next_page @moments, 'LOAD MORE', remote: true, id: 'load_more'

@@ -5,7 +5,7 @@ class MomentsController < ApplicationController
   before_action :owned_moment, only: [ :edit, :update, :destroy]
 
   def index
-    @moments = Moment.all
+    @moments = Moment.all.order('created_at DESC').page params[:page]
   end
 
   def new

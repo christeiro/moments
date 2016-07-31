@@ -2,6 +2,13 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_moment
 
+  def index
+    @comments = @moment.comments.order("created_at ASC")
+    respond_to do |format|
+      format.html { render layout: !request.xhr? }
+    end
+  end
+
   def create
     @comment = @moment.comments.build(set_params)
     @comment.user_id = current_user.id
