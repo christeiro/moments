@@ -1,6 +1,7 @@
 class MomentsController < ApplicationController
-  before_action :set_params, only: [:create]
-  before_action :set_moment, only: [:edit, :show, :update, :destroy]
+  before_action :set_params, only: [ :create ]
+  before_action :set_moment, only: [ :edit, :show, :update, :destroy ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :show ]
 
   def index
     @moments = Moment.all

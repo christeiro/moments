@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730150016) do
+ActiveRecord::Schema.define(version: 20160731064244) do
 
   create_table "moments", force: :cascade do |t|
     t.string   "caption"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20160730150016) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "moments", ["user_id"], name: "index_moments_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
