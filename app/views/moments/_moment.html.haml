@@ -23,7 +23,8 @@
           = render moment.comments.last(4), moment: moment
   .comment-like-form.row
     .col-sm-1.like-button
-      = link_to '', like_moment_path(moment.id), remote: true, id: "like_#{moment.id}", class: "glyphicon #{liked_moment moment}"
+      = link_to_if moment.liked_by(current_user), '', unlike_moment_path(moment.id), remote: true, id: "like_#{moment.id}", class: "glyphicon #{liked_moment moment}"  do
+        link_to '', like_moment_path(moment.id), remote: true, id: "like_#{moment.id}", class: "glyphicon #{liked_moment moment}"
     .comment-form.col-sm-11
       = form_for([moment, moment.comments.build], remote: true) do |f|
         = f.text_field :content, placeholder: 'Add acomment...', class: "comment_content", id: "comment_content_#{moment.id}"

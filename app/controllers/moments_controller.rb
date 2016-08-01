@@ -1,8 +1,8 @@
 class MomentsController < ApplicationController
   before_action :set_params, only: [ :create ]
-  before_action :set_moment, only: [ :edit, :show, :update, :destroy, :like ]
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :like ]
-  before_action :owned_moment, only: [ :edit, :update, :destroy]
+  before_action :set_moment, only: [ :edit, :show, :update, :destroy, :like, :unlike ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :like, :unlike ]
+  before_action :owned_moment, only: [ :edit, :update, :destroy ]
 
   def index
     @moments = Moment.all.order('created_at DESC').page params[:page]
@@ -48,6 +48,16 @@ class MomentsController < ApplicationController
 
   def like
     if @moment.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
+
+  def unlike
+    # binding.pry
+    if @moment.unliked_by current_user
       respond_to do |format|
         format.html { redirect_to :back }
         format.js

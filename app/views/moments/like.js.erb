@@ -1,2 +1,2 @@
-$("#like_<%= @moment.id %>").removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
-$("#likes_<%= @moment.id %>").html("<%= j (render partial: 'posts/likes', locals: { moment: @moment} ) %>");
+$("#like_<%= @moment.id %>").removeClass('glyphicon-heart-empty').addClass('glyphicon-heart').attr("href", "<%= unlike_moment_path(@moment.id) %>");
+$("#likes_<%= @moment.id %>").html("<%= j (render partial: 'moments/likes', locals: { moment: @moment} ) %>");

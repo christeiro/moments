@@ -10,6 +10,10 @@ module MomentsHelper
     count_likers(votes)
   end
 
+  def like_dislike_url(moment)
+
+  end
+
   private
 
   def like_plural(votes)
