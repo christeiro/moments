@@ -21,6 +21,7 @@ gem 'sprockets-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'jquery-turbolinks'
+gem 'acts_as_votable'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
