@@ -7,4 +7,5 @@ class Moment < ActiveRecord::Base
   validates :user_id, presence: true
   has_many :comments, dependent: :destroy
   validates :caption, length: { minimum: 3, maximum: 300 }
+  acts_as_votable
 end
