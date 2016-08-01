@@ -3,7 +3,7 @@
     .post-head
       .thumb-img
       .user-name
-        = moment.user.user_name
+        = link_to moment.user.user_name, profile_path(moment.user.user_name)
       .time-ago
         = time_ago_in_words moment.created_at
     .image.center-block
