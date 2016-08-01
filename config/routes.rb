@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'moments#index'
   resources :moments do
     resources :comments
+    member do
+      get 'like'
+    end
   end
   get ':user_name' => 'profiles#show', as: :profile
   get ':user_name/edit' => 'profiles#edit', as: :edit_profile
